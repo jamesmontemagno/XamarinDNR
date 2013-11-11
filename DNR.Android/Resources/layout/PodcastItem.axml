@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_card">
+    <ImageView android:id="@+id/podcastImage"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:scaleType="fitStart"
+        android:src="@drawable/default_icon"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="7"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:padding="8dp">
+        <TextView
+            android:text="Podcast Title goes here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:singleLine="true" />
+        <TextView
+            android:text="Podcast description will go here and can be up to 2 lines of text."
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:lines="2" />
+    </LinearLayout>
+</LinearLayout>

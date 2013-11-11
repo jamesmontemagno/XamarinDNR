@@ -1,0 +1,56 @@
+﻿<Application
+    x:Class="DNR.Win.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DNR.Win"
+    xmlns:localData="using:DNR.Win.Data"
+   RequestedTheme="Dark" >
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- 
+                    Styles that define common aspects of the platform look and feel
+                    Required by Visual Studio project and item templates
+                 -->
+                <ResourceDictionary Source="Common/StandardStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Application-specific resources -->
+
+            <x:String x:Key="AppName">DNR.Win</x:String>
+            <DataTemplate x:Key="DataTemplate1">
+                <Grid Height="110" Margin="6" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
+                        <Image Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Source="{Binding Image}"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextStyle}" TextWrapping="NoWrap" Foreground="Black" FontSize="24" LineStackingStrategy="MaxHeight"/>
+                        <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" MaxHeight="60" Foreground="#DE000000" FontSize="18.667" LineStackingStrategy="MaxHeight"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="DataTemplateSnapped">
+                <Grid Margin="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="60" Height="60">
+                        <Image Source="{Binding Image}" Stretch="UniformToFill"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource ItemTextStyle}" TextWrapping="NoWrap" Foreground="Black"  LineStackingStrategy="MaxHeight"/>
+                        <TextBlock Text="{Binding Description}" Style="{StaticResource CaptionTextStyle}" TextWrapping="Wrap" MaxHeight="40" Foreground="#DE000000" LineStackingStrategy="MaxHeight"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
