@@ -5,16 +5,18 @@ using Newtonsoft.Json;
 namespace DNR.Portable
 {
   //[DataContract]
-  public class PodcastEpisode
+  public class PodcastEpisodeSecure
   {
 
     /// <summary>
     /// Constructor for podcast episode.
     /// </summary>
-    public PodcastEpisode()
+    public PodcastEpisodeSecure()
     {
     }
 
+    [JsonProperty(PropertyName = "userId")]
+    public string UserId { get; set; }
 
     public int Id { get; set; }
     public string Name { get; set; }
@@ -33,7 +35,7 @@ namespace DNR.Portable
     /// Saves the current time out.
     /// </summary>
     /// <param name="time"></param>
-    public async Task<PodcastEpisode> SaveTimeAsync(int time = -1)
+    public async Task<PodcastEpisodeSecure> SaveTimeAsync(int time = -1)
     {
       if (time != -1)
           CurrentTime = time;
@@ -49,7 +51,7 @@ namespace DNR.Portable
     /// Saves the current time out.
     /// </summary>
     /// <param name="time"></param>
-    public async Task<PodcastEpisode> GetTimeAsync(int time = -1)
+    public async Task<PodcastEpisodeSecure> GetTimeAsync(int time = -1)
     {
       var updated = await AzureWebService.Instance.GetTimeAsync(ShowNumber);
       if (updated != null)

@@ -22,18 +22,28 @@ namespace DNR.Portable.Services
     public AzureWebService()
     {
       podcastClient = new MobileServiceClient(
-        "https://"+"PUT-SITE-HERE" +".azure-mobile.net/",
+        "https://" + "PUT-SITE-HERE" + ".azure-mobile.net/",
         "PUT-YOUR-API-KEY-HERE");
-      podcastTable = podcastClient.GetTable<PodcastEpisode>();
-    }
 
+      podcastTable = podcastClient.GetTable<PodcastEpisodeSecure>();
+    }
     private MobileServiceClient podcastClient;
-    private MobileServiceCollection<PodcastEpisode, PodcastEpisode> podcasts;
-    private readonly IMobileServiceTable<PodcastEpisode> podcastTable;
+    private MobileServiceCollection<PodcastEpisodeSecure, PodcastEpisodeSecure> podcasts;
+    private readonly IMobileServiceTable<PodcastEpisodeSecure> podcastTable;
     static readonly AzureWebService instance = new AzureWebService();
 
-    public async Task<PodcastEpisode> GetTimeAsync(int shownum)
+    public MobileServiceClient Client
     {
+      get { return podcastClient; }
+    }
+
+    public async Task<PodcastEpisodeSecure> GetTimeAsync(int shownum)
+    {
+      if (podcastClient.CurrentUser == null)
+        return null;
+
+
+
       try
       {
         //retrieve postcast based off show number
@@ -44,11 +54,15 @@ namespace DNR.Portable.Services
       {
       }
 
-      return new PodcastEpisode { ShowNumber = shownum, CurrentTime = 0 };
+      return new PodcastEpisodeSecure { ShowNumber = shownum, CurrentTime = 0 };
     }
     
-    public async Task<PodcastEpisode> SaveTimeAsync(PodcastEpisode ep)
+    public async Task<PodcastEpisodeSecure> SaveTimeAsync(PodcastEpisodeSecure ep)
     {
+
+      if (podcastClient.CurrentUser == null)
+        return null;
+
       try
       {
         //Check to see if the podcast already exists, if Id is set.

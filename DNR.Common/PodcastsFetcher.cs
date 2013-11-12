@@ -16,7 +16,7 @@ namespace DNR.Portable
     const string PodcastUrl = "http://www.pwop.com/feed.aspx?show=dotnetrocks&filetype=master&tags=Mobile%2cMono";
 
 
-    public async Task<IEnumerable<PodcastEpisode>> GetPodcastsAsync()
+    public async Task<IEnumerable<PodcastEpisodeSecure>> GetPodcastsAsync()
     {
       try
       {
@@ -29,14 +29,14 @@ namespace DNR.Portable
         
       }
 
-      return new List<PodcastEpisode>();
+      return new List<PodcastEpisodeSecure>();
     }
 
-    private IEnumerable<PodcastEpisode> ParseXml(Stream stream)
+    private IEnumerable<PodcastEpisodeSecure> ParseXml(Stream stream)
     {
       var xdoc = XDocument.Load(stream);
       return (from item in xdoc.Descendants("item")
-              select new PodcastEpisode
+              select new PodcastEpisodeSecure
               {
                 Name = (string)item.Element("title"),
                 Description = (string)item.Element("description"),

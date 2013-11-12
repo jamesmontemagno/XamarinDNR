@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Services\AzureWebService.cs" />
-    <Compile Include="PodcastEpisode.cs" />
+    <Compile Include="PodcastEpisodeSecure.cs" />
     <Compile Include="PodcastsFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

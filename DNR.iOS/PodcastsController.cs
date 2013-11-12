@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using DNR.Portable;
+using DNR.Portable.Services;
+using Microsoft.WindowsAzure.MobileServices;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Drawing;
@@ -10,8 +13,8 @@ namespace DNR
 {
   public class PodcastsController : UICollectionViewController
   {
-    List<PodcastEpisode> podcasts;
-    List<PodcastEpisode> filteredPodcasts;
+    List<PodcastEpisodeSecure> podcasts;
+    List<PodcastEpisodeSecure> filteredPodcasts;
     PodcastDetailController podcastController;
     UISearchBar searchBar;
     PodcastFetcher fetcher;
@@ -20,7 +23,7 @@ namespace DNR
     public PodcastsController(UICollectionViewLayout layout)
       : base(layout)
     {
-      podcasts = new List<PodcastEpisode>();
+      podcasts = new List<PodcastEpisodeSecure>();
       filteredPodcasts = podcasts;
 
       searchBar = new UISearchBar
@@ -58,6 +61,8 @@ namespace DNR
 
     async void GetEpisodes()
     {
+      await Authenticate();
+
       fetcher = new PodcastFetcher();
       activityView.StartAnimating();
       podcasts.AddRange(await fetcher.GetPodcastsAsync());
@@ -162,6 +167,32 @@ namespace DNR
       ).ToList();
 
       CollectionView.ReloadData();
+    }
+
+
+    private async System.Threading.Tasks.Task Authenticate()
+    {
+      while (AzureWebService.Instance.Client.CurrentUser == null)
+      {
+        string message;
+        try
+        {
+          
+          AzureWebService.Instance.Client.CurrentUser = await AzureWebService.Instance.Client
+            .LoginAsync(this, MobileServiceAuthenticationProvider.Twitter);
+          message =
+            string.Format("You are now logged in - {0}", AzureWebService.Instance.Client.CurrentUser.UserId);
+
+
+        }
+        catch (InvalidOperationException ex)
+        {
+          message = "You must log in. Login Required";
+        }
+
+        var alert = new UIAlertView("Login", message, null, "OK", null);
+        alert.Show();
+      }
     }
   }
 }

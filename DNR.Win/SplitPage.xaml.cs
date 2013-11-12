@@ -1,4 +1,6 @@
-﻿using DNR.Portable;
+﻿using Windows.UI.Popups;
+using DNR.Portable;
+using DNR.Portable.Services;
 using DNR.Win.Data;
 using System;
 using System.Collections.Generic;
@@ -6,12 +8,13 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace DNR.Win
 {
   public sealed partial class SplitPage : DNR.Win.Common.LayoutAwarePage
   {
-    PodcastEpisode podcast;
+    PodcastEpisodeSecure podcast;
     readonly DispatcherTimer timer;
     bool isPressed;
     double newValue;
@@ -34,7 +37,7 @@ namespace DNR.Win
 
         if (!initialized)
           return;
-        if (newValue >= 0)
+        if (newValue > 0)
           player.Position = new TimeSpan(0, 0, (int)((newValue / 100) * player.NaturalDuration.TimeSpan.TotalSeconds));
       };
     }
@@ -142,8 +145,13 @@ namespace DNR.Win
     /// </param>
     /// <param name="pageState">A dictionary of state preserved by this page during an earlier
     /// session.  This will be null the first time a page is visited.</param>
-    protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
+    protected async override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
     {
+
+      if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+      {
+        await Authenticate();
+      }
       var group = SampleDataSource.GetGroup("Group-1");
       this.DefaultViewModel["Group"] = group;
       this.DefaultViewModel["Items"] = group.Items;
@@ -274,6 +282,32 @@ namespace DNR.Win
     private void pageTitle_PointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
     {
       this.Frame.Navigate(typeof(GetStarted));
+    }
+
+
+
+    private async System.Threading.Tasks.Task Authenticate()
+    {
+      while (AzureWebService.Instance.Client.CurrentUser == null)
+      {
+        string message;
+        try
+        {
+          AzureWebService.Instance.Client.CurrentUser = await AzureWebService.Instance.Client
+            .LoginAsync(MobileServiceAuthenticationProvider.Twitter);
+          message =
+            string.Format("You are now logged in - {0}", AzureWebService.Instance.Client.CurrentUser.UserId);
+        }
+        catch (InvalidOperationException ex)
+        {
+          message = "You must log in. Login Required";
+        }
+
+
+        var dialog = new MessageDialog(message);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+      }
     }
 
   }
