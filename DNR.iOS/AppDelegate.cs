@@ -1,7 +1,5 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using DNR.Portable;
-using DNR.Portable.Services;
 using Microsoft.WindowsAzure.MobileServices;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -14,19 +12,10 @@ namespace DNR
 		UIWindow window;
 		UINavigationController navController;
 		PodcastsController podcastsController;
-	  private int azureGet = 0;
 
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
       CurrentPlatform.Init();
-		  AzureWebService.AzureFactory.Get = () =>
-		  {
-			if (azureGet == 0) {
-		      azureGet = 1;
-          	  return "http://" + PodcastFetcher.localIP + "/timestampempty{0}.json";
-		    }
-        	return "http://" + PodcastFetcher.localIP + "/timestamp{0}.json";
-		  };
 
 
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
