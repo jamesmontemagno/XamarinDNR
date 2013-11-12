@@ -3,7 +3,7 @@ DotNetRocks
 
 Setup
 
-* Create a new Azure Mobile Services Table Called "PodcastEpisode"
+* Create a new Azure Mobile Services Table Called "PodcastEpisodeSecure"
 * Follow this guide to setup the Table for Authentication: http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
 * Setup Azure Scripts for Insert, Read, Update: http://www.windowsazure.com/en-us/develop/mobile/tutorials/authorize-users-in-scripts-dotnet/
 * Setup Twitter App for Authentication: http://www.dotnetcurry.com/ShowArticle.aspx?ID=860
