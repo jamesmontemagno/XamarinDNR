@@ -12,7 +12,7 @@ namespace DNR
 {
   class PodcastDetailController : UIViewController
   {
-    PodcastEpisodeSecure currentPodcastEpisode;
+    PodcastEpisode currentPodcastEpisode;
     AVPlayer player;
     UITextView descriptionView;
     UIToolbar playerBar;
@@ -29,7 +29,7 @@ namespace DNR
 
     static readonly Random Rnd = new Random();
 
-    public PodcastEpisodeSecure CurrentPodcastEpisode
+    public PodcastEpisode CurrentPodcastEpisode
     {
       get
       {

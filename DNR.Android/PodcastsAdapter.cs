@@ -9,7 +9,7 @@ namespace DRN.Droid
 {
     public class PodcastsAdapter : BaseAdapter
     {
-        List<PodcastEpisodeSecure> podcasts = new List<PodcastEpisodeSecure>();
+        List<PodcastEpisode> podcasts = new List<PodcastEpisode>();
       readonly Activity activity;
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -30,7 +30,7 @@ namespace DRN.Droid
         /// <summary>
         /// Gets or sets the podcasts
         /// </summary>
-        public List<PodcastEpisodeSecure> Podcasts
+        public List<PodcastEpisode> Podcasts
         {
             get { return podcasts; }
             set { podcasts = value; }

@@ -42,7 +42,7 @@ namespace DRN.Droid
 
       var fetcher = new PodcastFetcher();
       var podcasts = await fetcher.GetPodcastsAsync();
-      podcastAdapter.Podcasts = new List<PodcastEpisodeSecure>(podcasts);
+      podcastAdapter.Podcasts = new List<PodcastEpisode>(podcasts);
       podcastAdapter.NotifyDataSetChanged();
     }
 

@@ -13,7 +13,7 @@ namespace DRN.Droid
   [Activity(Label = ".NET Rocks!", Theme = "@style/Theme", Icon = "@drawable/Icon")]
   public class PodcastDetailActivity : Activity
   {
-    public static PodcastEpisodeSecure CurrentPodcastEpisode { get; set; }
+    public static PodcastEpisode CurrentPodcastEpisode { get; set; }
     MediaPlayer player;
     TextView status;
     SeekBar seekBar;

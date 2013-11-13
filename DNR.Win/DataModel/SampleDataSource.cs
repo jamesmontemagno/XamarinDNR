@@ -106,7 +106,7 @@ namespace DNR.Win.Data
     /// </summary>
     public class SampleDataItem : SampleDataCommon
     {
-        public SampleDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content, SampleDataGroup group, PodcastEpisodeSecure podcast)
+        public SampleDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content, SampleDataGroup group, PodcastEpisode podcast)
             : base(uniqueId, title, subtitle, imagePath, description)
         {
             this._content = content;
@@ -129,7 +129,7 @@ namespace DNR.Win.Data
             set { this.SetProperty(ref this._group, value); }
         }
 
-        public PodcastEpisodeSecure Podcast { get; set; }
+        public PodcastEpisode Podcast { get; set; }
     }
 
     /// <summary>
@@ -253,24 +253,24 @@ namespace DNR.Win.Data
             return null;
         }
 
-        List<PodcastEpisodeSecure> episodes;
+        List<PodcastEpisode> episodes;
         PodcastFetcher fetcher;
         SampleDataGroup group1;
 
         private void LoadSampleData()
         {
-            var podcasts = new List<PodcastEpisodeSecure>
+            var podcasts = new List<PodcastEpisode>
             {
-                new PodcastEpisodeSecure{Name="Podcast 1", Image = "Assets/default_icon.png", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor scelerisque lorem in vehicula. Aliquam tincidunt, lacus ut sagittis tristique, turpis massa volutpat augue, eu rutrum ligula ante a ante"},
-                new PodcastEpisodeSecure{Name="Podcast 2", Image = "Assets/default_icon.png", Description="This is podcast 2"},
-                new PodcastEpisodeSecure{Name="Podcast 3", Image = "Assets/default_icon.png", Description="This is podcast 3"},
-                new PodcastEpisodeSecure{Name="Podcast 4", Image = "Assets/default_icon.png", Description="This is podcast 4"},
-                new PodcastEpisodeSecure{Name="Podcast 5", Image = "Assets/default_icon.png", Description="This is podcast 5"},
-                new PodcastEpisodeSecure{Name="Podcast 6", Image = "Assets/default_icon.png", Description="This is podcast 6"},
-                new PodcastEpisodeSecure{Name="Podcast 7", Image = "Assets/default_icon.png", Description="This is podcast 7"},
-                new PodcastEpisodeSecure{Name="Podcast 8", Image = "Assets/default_icon.png", Description="This is podcast 8"},
-                new PodcastEpisodeSecure{Name="Podcast 9", Image = "Assets/default_icon.png", Description="This is podcast 9"},
-                new PodcastEpisodeSecure{Name="Podcast 10", Image = "Assets/default_icon.png", Description="This is podcast 10"}
+                new PodcastEpisode{Name="Podcast 1", Image = "Assets/default_icon.png", Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor scelerisque lorem in vehicula. Aliquam tincidunt, lacus ut sagittis tristique, turpis massa volutpat augue, eu rutrum ligula ante a ante"},
+                new PodcastEpisode{Name="Podcast 2", Image = "Assets/default_icon.png", Description="This is podcast 2"},
+                new PodcastEpisode{Name="Podcast 3", Image = "Assets/default_icon.png", Description="This is podcast 3"},
+                new PodcastEpisode{Name="Podcast 4", Image = "Assets/default_icon.png", Description="This is podcast 4"},
+                new PodcastEpisode{Name="Podcast 5", Image = "Assets/default_icon.png", Description="This is podcast 5"},
+                new PodcastEpisode{Name="Podcast 6", Image = "Assets/default_icon.png", Description="This is podcast 6"},
+                new PodcastEpisode{Name="Podcast 7", Image = "Assets/default_icon.png", Description="This is podcast 7"},
+                new PodcastEpisode{Name="Podcast 8", Image = "Assets/default_icon.png", Description="This is podcast 8"},
+                new PodcastEpisode{Name="Podcast 9", Image = "Assets/default_icon.png", Description="This is podcast 9"},
+                new PodcastEpisode{Name="Podcast 10", Image = "Assets/default_icon.png", Description="This is podcast 10"}
             };
 
             group1 = new SampleDataGroup("Group-1",
@@ -311,7 +311,7 @@ namespace DNR.Win.Data
             
 
             fetcher = new PodcastFetcher();
-            episodes = new List<PodcastEpisodeSecure>(await fetcher.GetPodcastsAsync());
+            episodes = new List<PodcastEpisode>(await fetcher.GetPodcastsAsync());
             int i = 0;
             foreach (var episode in episodes)
             {

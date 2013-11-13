@@ -25,11 +25,11 @@ namespace DNR.Portable.Services
         "https://" + "PUT-SITE-HERE" + ".azure-mobile.net/",
         "PUT-YOUR-API-KEY-HERE");
 
-      podcastTable = podcastClient.GetTable<PodcastEpisodeSecure>();
+      podcastTable = podcastClient.GetTable<PodcastEpisode>();
     }
     private MobileServiceClient podcastClient;
-    private MobileServiceCollection<PodcastEpisodeSecure, PodcastEpisodeSecure> podcasts;
-    private readonly IMobileServiceTable<PodcastEpisodeSecure> podcastTable;
+    private MobileServiceCollection<PodcastEpisode, PodcastEpisode> podcasts;
+    private readonly IMobileServiceTable<PodcastEpisode> podcastTable;
     static readonly AzureWebService instance = new AzureWebService();
 
     public MobileServiceClient Client
@@ -37,7 +37,7 @@ namespace DNR.Portable.Services
       get { return podcastClient; }
     }
 
-    public async Task<PodcastEpisodeSecure> GetTimeAsync(int shownum)
+    public async Task<PodcastEpisode> GetTimeAsync(int shownum)
     {
       if (podcastClient.CurrentUser == null)
         return null;
@@ -54,10 +54,10 @@ namespace DNR.Portable.Services
       {
       }
 
-      return new PodcastEpisodeSecure { ShowNumber = shownum, CurrentTime = 0 };
+      return new PodcastEpisode { ShowNumber = shownum, CurrentTime = 0 };
     }
     
-    public async Task<PodcastEpisodeSecure> SaveTimeAsync(PodcastEpisodeSecure ep)
+    public async Task<PodcastEpisode> SaveTimeAsync(PodcastEpisode ep)
     {
 
       if (podcastClient.CurrentUser == null)

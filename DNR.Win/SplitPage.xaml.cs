@@ -14,7 +14,7 @@ namespace DNR.Win
 {
   public sealed partial class SplitPage : DNR.Win.Common.LayoutAwarePage
   {
-    PodcastEpisodeSecure podcast;
+    PodcastEpisode podcast;
     readonly DispatcherTimer timer;
     bool isPressed;
     double newValue;
@@ -30,14 +30,14 @@ namespace DNR.Win
       timer.Tick += UpdateTimeDisplay;
 
       //detect if the user is touching the slider or not.
-      Window.Current.CoreWindow.PointerPressed += (e, a) => { isPressed = true; newValue = 0; };
+      Window.Current.CoreWindow.PointerPressed += (e, a) => { isPressed = true; newValue = -1; };
       Window.Current.CoreWindow.PointerReleased += (e, a) =>
       {
         isPressed = false;
 
         if (!initialized)
           return;
-        if (newValue > 0)
+        if (newValue >= 0)
           player.Position = new TimeSpan(0, 0, (int)((newValue / 100) * player.NaturalDuration.TimeSpan.TotalSeconds));
       };
     }

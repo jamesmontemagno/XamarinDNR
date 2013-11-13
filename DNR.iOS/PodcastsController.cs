@@ -13,8 +13,8 @@ namespace DNR
 {
   public class PodcastsController : UICollectionViewController
   {
-    List<PodcastEpisodeSecure> podcasts;
-    List<PodcastEpisodeSecure> filteredPodcasts;
+    List<PodcastEpisode> podcasts;
+    List<PodcastEpisode> filteredPodcasts;
     PodcastDetailController podcastController;
     UISearchBar searchBar;
     PodcastFetcher fetcher;
@@ -23,7 +23,7 @@ namespace DNR
     public PodcastsController(UICollectionViewLayout layout)
       : base(layout)
     {
-      podcasts = new List<PodcastEpisodeSecure>();
+      podcasts = new List<PodcastEpisode>();
       filteredPodcasts = podcasts;
 
       searchBar = new UISearchBar
