@@ -21,20 +21,21 @@ namespace DNR.Portable
       try
       {
         var client = new HttpClient();
-        var stream = await client.GetStreamAsync(PodcastUrl);
-        return ParseXml(stream);
+        var podcastString = await client.GetStringAsync(PodcastUrl);
+        var podcasts = ParseXml(podcastString);
+        return podcasts;
       }
       catch (Exception ex)
       {
-        
+
       }
 
       return new List<PodcastEpisode>();
     }
 
-    private IEnumerable<PodcastEpisode> ParseXml(Stream stream)
+    private IEnumerable<PodcastEpisode> ParseXml(string podcastString)
     {
-      var xdoc = XDocument.Load(stream);
+      var xdoc = XDocument.Parse(podcastString, LoadOptions.None);
       return (from item in xdoc.Descendants("item")
               select new PodcastEpisode
               {

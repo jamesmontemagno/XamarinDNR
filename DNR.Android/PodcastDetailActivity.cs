@@ -38,7 +38,9 @@ namespace DRN.Droid
       status = FindViewById<TextView>(Resource.Id.statusText);
       updateHandler = new Handler();
 
-      player = MediaPlayer.Create(this, Android.Net.Uri.Parse(CurrentPodcastEpisode.AudioUrl));
+      player = new MediaPlayer();
+      player.SetDataSource(this, Android.Net.Uri.Parse(CurrentPodcastEpisode.AudioUrl));
+      player.PrepareAsync();
 
       player.Prepared += (sender, e) =>
           {
