@@ -67,7 +67,7 @@ namespace DNR.Portable.Services
       {
         //Check to see if the podcast already exists, if Id is set.
         //then update it, else insert.
-        if (ep.Id > 0)
+        if (string.IsNullOrWhiteSpace(ep.Id))
         {
           await podcastTable.UpdateAsync(ep);
         }
