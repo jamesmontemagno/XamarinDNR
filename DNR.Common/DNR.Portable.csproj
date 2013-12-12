@@ -38,9 +38,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Services\AzureWebService.cs" />
-    <Compile Include="PodcastEpisode.cs" />
-    <Compile Include="PodcastsFetcher.cs" />
+    <Compile Include="Models\PodcastEpisode.cs" />
+    <Compile Include="ViewModels\PodcastsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

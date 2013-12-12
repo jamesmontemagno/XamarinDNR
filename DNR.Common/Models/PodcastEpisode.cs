@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using DNR.Portable.Services;
 using Newtonsoft.Json;
 
-namespace DNR.Portable
+namespace DNR.Portable.Models
 {
-  //[DataContract]
   public class PodcastEpisode
   {
 
@@ -13,16 +13,10 @@ namespace DNR.Portable
     /// </summary>
     public PodcastEpisode()
     {
-      Image = string.Empty;
-      Name = string.Empty;
-      Description = string.Empty;
-      AudioUrl = string.Empty;
     }
 
-    [JsonProperty(PropertyName = "userId")]
-    public string UserId { get; set; }
-
-    public string Id { get; set; }
+    //Public properties
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public string AudioUrl { get; set; }
@@ -34,6 +28,9 @@ namespace DNR.Portable
 
     [JsonProperty(PropertyName = "time")]
     public int CurrentTime { get; set; }
+
+    [JsonProperty(PropertyName = "userId")]
+    public string UserId { get; set; }
 
     /// <summary>
     /// Saves the current time out.
@@ -64,6 +61,13 @@ namespace DNR.Portable
       return updated;
     }
 
+    public string GetTimeDisplay(TimeSpan current, TimeSpan duration)
+    {
+      CurrentTime = (int)current.TotalSeconds;
+      var currentText = string.Format("{0:hh\\:mm\\:ss}", current);
+      var durationText = string.Format("{0:hh\\:mm\\:ss}", duration);
+      return currentText + " / " + durationText;
+    }
 
 
   }

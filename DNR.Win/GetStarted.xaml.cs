@@ -21,11 +21,17 @@ namespace DNR.Win
   /// <summary>
   /// A basic page that provides characteristics common to most applications.
   /// </summary>
-  public sealed partial class GetStarted : DNR.Win.Common.LayoutAwarePage
+  public sealed partial class GetStarted : Page
   {
     public GetStarted()
     {
       this.InitializeComponent();
+    }
+
+
+    private void BackButton_OnClick(object sender, RoutedEventArgs e)
+    {
+      this.Frame.GoBack();
     }
   }
 }

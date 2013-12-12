@@ -1,15 +1,10 @@
-﻿//#define LOCALDATA
+﻿
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
+using DNR.Portable.Models;
 using Microsoft.WindowsAzure.MobileServices;
-using Newtonsoft.Json.Linq;
 
 namespace DNR.Portable.Services
 {
@@ -21,15 +16,17 @@ namespace DNR.Portable.Services
 
     public AzureWebService()
     {
+      // Update MobileServiceClient with your tables URL and Cliet Key.
       podcastClient = new MobileServiceClient(
-        "https://" + "PUT-SITE-HERE" + ".azure-mobile.net/",
-        "PUT-YOUR-API-KEY-HERE");
+        "https://<YOUR URL HERE>.azure-mobile.net/",
+        "<YOUR CLIENT KEY HERE>");
 
       podcastTable = podcastClient.GetTable<PodcastEpisode>();
     }
+
     private MobileServiceClient podcastClient;
     private MobileServiceCollection<PodcastEpisode, PodcastEpisode> podcasts;
-    private readonly IMobileServiceTable<PodcastEpisode> podcastTable;
+    private IMobileServiceTable<PodcastEpisode> podcastTable;
     static readonly AzureWebService instance = new AzureWebService();
 
     public MobileServiceClient Client
@@ -39,11 +36,6 @@ namespace DNR.Portable.Services
 
     public async Task<PodcastEpisode> GetTimeAsync(int shownum)
     {
-      if (podcastClient.CurrentUser == null)
-        return null;
-
-
-
       try
       {
         //retrieve postcast based off show number
@@ -59,15 +51,11 @@ namespace DNR.Portable.Services
     
     public async Task<PodcastEpisode> SaveTimeAsync(PodcastEpisode ep)
     {
-
-      if (podcastClient.CurrentUser == null)
-        return null;
-
       try
       {
         //Check to see if the podcast already exists, if Id is set.
         //then update it, else insert.
-        if (string.IsNullOrWhiteSpace(ep.Id))
+        if (ep.Id > 0)
         {
           await podcastTable.UpdateAsync(ep);
         }

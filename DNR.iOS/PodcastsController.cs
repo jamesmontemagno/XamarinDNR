@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using DNR.Portable;
+using DNR.Portable.Models;
 using DNR.Portable.Services;
 using Microsoft.WindowsAzure.MobileServices;
 using MonoTouch.Foundation;
@@ -13,18 +14,20 @@ namespace DNR
 {
   public class PodcastsController : UICollectionViewController
   {
-    List<PodcastEpisode> podcasts;
-    List<PodcastEpisode> filteredPodcasts;
+    private static PodcastsViewModel viewModel;
+
+    public static PodcastsViewModel ViewModel
+    {
+      get { return viewModel ?? (viewModel = new PodcastsViewModel()); }
+    }
+    
     PodcastDetailController podcastController;
     UISearchBar searchBar;
-    PodcastFetcher fetcher;
     UIActivityIndicatorView activityView;
 
     public PodcastsController(UICollectionViewLayout layout)
       : base(layout)
     {
-      podcasts = new List<PodcastEpisode>();
-      filteredPodcasts = podcasts;
 
       searchBar = new UISearchBar
       {
@@ -61,12 +64,14 @@ namespace DNR
 
     async void GetEpisodes()
     {
+      // Comment this out if you do not want Twitter Authentication
+      // You will need to set your Azure permissions to any client with API Key
       await Authenticate();
 
-      fetcher = new PodcastFetcher();
       activityView.StartAnimating();
-      podcasts.AddRange(await fetcher.GetPodcastsAsync());
-      filteredPodcasts = podcasts;
+
+      await ViewModel.ExecuteGetPodcastsCommand();
+
       CollectionView.ReloadData();
       activityView.StopAnimating();
     }
@@ -81,7 +86,7 @@ namespace DNR
       searchBar.Hidden = true;
       Title = ".NET Rocks";
 
-      podcastController.CurrentPodcastEpisode = podcasts[indexPath.Row];
+      podcastController.CurrentPodcastEpisode = ViewModel.FilteredPodcasts[indexPath.Row];
       NavigationController.PushViewController(podcastController, true);
     }
 
@@ -113,14 +118,14 @@ namespace DNR
 
     public override int GetItemsCount(UICollectionView collectionView, int section)
     {
-      return filteredPodcasts.Count;
+      return ViewModel.FilteredPodcasts.Count;
     }
 
     public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
     {
       var podcastCell = (PodcastCell)collectionView.DequeueReusableCell(PodcastCell.Key, indexPath);
-      podcastCell.Name = filteredPodcasts[indexPath.Row].Name;
-      podcastCell.DetailText = filteredPodcasts[indexPath.Row].Description;
+      podcastCell.Name = ViewModel.FilteredPodcasts[indexPath.Row].Name;
+      podcastCell.DetailText = ViewModel.FilteredPodcasts[indexPath.Row].Description;
 
       return podcastCell;
     }
@@ -162,10 +167,7 @@ namespace DNR
 
     void Search(string text)
     {
-      filteredPodcasts = podcasts.Where(podcast =>
-        podcast.Description.Contains(text) || podcast.Name.Contains(text)
-      ).ToList();
-
+      ViewModel.FilterPodcastCommand.Execute(text);
       CollectionView.ReloadData();
     }
 
@@ -177,7 +179,7 @@ namespace DNR
         string message;
         try
         {
-          
+
           AzureWebService.Instance.Client.CurrentUser = await AzureWebService.Instance.Client
             .LoginAsync(this, MobileServiceAuthenticationProvider.Twitter);
           message =

@@ -4,5 +4,6 @@
 	<string name="stop">Stop</string>
 	<string name="pause">Pause</string>
 	<string name="play">Play</string>
-<string name="Hello">Hello World, Click Me!</string>
+  <string name="loading">Loading...</string>
+  <string name="Hello">Hello World, Click Me!</string>
 </resources>

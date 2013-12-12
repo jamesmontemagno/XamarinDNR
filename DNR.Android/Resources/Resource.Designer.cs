@@ -26,10 +26,83 @@ namespace DNR.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::AndroidHUD.Resource.Attribute.barColor = global::DNR.Droid.Resource.Attribute.barColor;
+			global::AndroidHUD.Resource.Attribute.barLength = global::DNR.Droid.Resource.Attribute.barLength;
+			global::AndroidHUD.Resource.Attribute.barWidth = global::DNR.Droid.Resource.Attribute.barWidth;
+			global::AndroidHUD.Resource.Attribute.circleColor = global::DNR.Droid.Resource.Attribute.circleColor;
+			global::AndroidHUD.Resource.Attribute.delayMillis = global::DNR.Droid.Resource.Attribute.delayMillis;
+			global::AndroidHUD.Resource.Attribute.radius = global::DNR.Droid.Resource.Attribute.radius;
+			global::AndroidHUD.Resource.Attribute.rimColor = global::DNR.Droid.Resource.Attribute.rimColor;
+			global::AndroidHUD.Resource.Attribute.rimWidth = global::DNR.Droid.Resource.Attribute.rimWidth;
+			global::AndroidHUD.Resource.Attribute.spinSpeed = global::DNR.Droid.Resource.Attribute.spinSpeed;
+			global::AndroidHUD.Resource.Attribute.text = global::DNR.Droid.Resource.Attribute.text;
+			global::AndroidHUD.Resource.Attribute.textColor = global::DNR.Droid.Resource.Attribute.textColor;
+			global::AndroidHUD.Resource.Attribute.textSize = global::DNR.Droid.Resource.Attribute.textSize;
+			global::AndroidHUD.Resource.Drawable.ic_errorstatus = global::DNR.Droid.Resource.Drawable.ic_errorstatus;
+			global::AndroidHUD.Resource.Drawable.ic_successstatus = global::DNR.Droid.Resource.Drawable.ic_successstatus;
+			global::AndroidHUD.Resource.Drawable.roundedbg = global::DNR.Droid.Resource.Drawable.roundedbg;
+			global::AndroidHUD.Resource.Drawable.roundedbgdark = global::DNR.Droid.Resource.Drawable.roundedbgdark;
+			global::AndroidHUD.Resource.Id.loadingImage = global::DNR.Droid.Resource.Id.loadingImage;
+			global::AndroidHUD.Resource.Id.loadingProgressBar = global::DNR.Droid.Resource.Id.loadingProgressBar;
+			global::AndroidHUD.Resource.Id.loadingProgressWheel = global::DNR.Droid.Resource.Id.loadingProgressWheel;
+			global::AndroidHUD.Resource.Id.textViewStatus = global::DNR.Droid.Resource.Id.textViewStatus;
+			global::AndroidHUD.Resource.Layout.loading = global::DNR.Droid.Resource.Layout.loading;
+			global::AndroidHUD.Resource.Layout.loadingimage = global::DNR.Droid.Resource.Layout.loadingimage;
+			global::AndroidHUD.Resource.Layout.loadingprogress = global::DNR.Droid.Resource.Layout.loadingprogress;
+			global::AndroidHUD.Resource.String.library_name = global::DNR.Droid.Resource.String.library_name;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel = global::DNR.Droid.Resource.Styleable.ProgressWheel;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_barColor = global::DNR.Droid.Resource.Styleable.ProgressWheel_barColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_barLength = global::DNR.Droid.Resource.Styleable.ProgressWheel_barLength;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_barWidth = global::DNR.Droid.Resource.Styleable.ProgressWheel_barWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_circleColor = global::DNR.Droid.Resource.Styleable.ProgressWheel_circleColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_delayMillis = global::DNR.Droid.Resource.Styleable.ProgressWheel_delayMillis;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_radius = global::DNR.Droid.Resource.Styleable.ProgressWheel_radius;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_rimColor = global::DNR.Droid.Resource.Styleable.ProgressWheel_rimColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_rimWidth = global::DNR.Droid.Resource.Styleable.ProgressWheel_rimWidth;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_spinSpeed = global::DNR.Droid.Resource.Styleable.ProgressWheel_spinSpeed;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_text = global::DNR.Droid.Resource.Styleable.ProgressWheel_text;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_textColor = global::DNR.Droid.Resource.Styleable.ProgressWheel_textColor;
+			global::AndroidHUD.Resource.Styleable.ProgressWheel_textSize = global::DNR.Droid.Resource.Styleable.ProgressWheel_textSize;
 		}
 		
 		public partial class Attribute
 		{
+			
+			// aapt resource value: 0x7f010003
+			public const int barColor = 2130771971;
+			
+			// aapt resource value: 0x7f01000b
+			public const int barLength = 2130771979;
+			
+			// aapt resource value: 0x7f01000a
+			public const int barWidth = 2130771978;
+			
+			// aapt resource value: 0x7f010008
+			public const int circleColor = 2130771976;
+			
+			// aapt resource value: 0x7f010007
+			public const int delayMillis = 2130771975;
+			
+			// aapt resource value: 0x7f010009
+			public const int radius = 2130771977;
+			
+			// aapt resource value: 0x7f010004
+			public const int rimColor = 2130771972;
+			
+			// aapt resource value: 0x7f010005
+			public const int rimWidth = 2130771973;
+			
+			// aapt resource value: 0x7f010006
+			public const int spinSpeed = 2130771974;
+			
+			// aapt resource value: 0x7f010000
+			public const int text = 2130771968;
+			
+			// aapt resource value: 0x7f010001
+			public const int textColor = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int textSize = 2130771970;
 			
 			static Attribute()
 			{
@@ -44,8 +117,8 @@ namespace DNR.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int background = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int background = 2131034112;
 			
 			static Color()
 			{
@@ -82,7 +155,19 @@ namespace DNR.Droid
 			public const int ic_av_stop = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int Icon = 2130837511;
+			public const int ic_errorstatus = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int ic_successstatus = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int Icon = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int roundedbg = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int roundedbgdark = 2130837515;
 			
 			static Drawable()
 			{
@@ -97,38 +182,50 @@ namespace DNR.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070007
-			public const int descriptionView = 2131165191;
-			
-			// aapt resource value: 0x7f070001
-			public const int linearLayout1 = 2131165185;
-			
-			// aapt resource value: 0x7f070003
-			public const int pauseButton = 2131165187;
-			
-			// aapt resource value: 0x7f070002
-			public const int playButton = 2131165186;
-			
-			// aapt resource value: 0x7f070008
-			public const int podcastImage = 2131165192;
-			
-			// aapt resource value: 0x7f070000
-			public const int podcastsListView = 2131165184;
-			
-			// aapt resource value: 0x7f070006
-			public const int seekBar1 = 2131165190;
+			// aapt resource value: 0x7f07000b
+			public const int descriptionView = 2131165195;
 			
 			// aapt resource value: 0x7f070005
-			public const int statusText = 2131165189;
+			public const int linearLayout1 = 2131165189;
+			
+			// aapt resource value: 0x7f070002
+			public const int loadingImage = 2131165186;
+			
+			// aapt resource value: 0x7f070000
+			public const int loadingProgressBar = 2131165184;
+			
+			// aapt resource value: 0x7f070003
+			public const int loadingProgressWheel = 2131165187;
+			
+			// aapt resource value: 0x7f070007
+			public const int pauseButton = 2131165191;
+			
+			// aapt resource value: 0x7f070006
+			public const int playButton = 2131165190;
+			
+			// aapt resource value: 0x7f07000c
+			public const int podcastImage = 2131165196;
 			
 			// aapt resource value: 0x7f070004
-			public const int stopButton = 2131165188;
-			
-			// aapt resource value: 0x7f070009
-			public const int textView1 = 2131165193;
+			public const int podcastsListView = 2131165188;
 			
 			// aapt resource value: 0x7f07000a
-			public const int textView2 = 2131165194;
+			public const int seekBar1 = 2131165194;
+			
+			// aapt resource value: 0x7f070009
+			public const int statusText = 2131165193;
+			
+			// aapt resource value: 0x7f070008
+			public const int stopButton = 2131165192;
+			
+			// aapt resource value: 0x7f07000d
+			public const int textView1 = 2131165197;
+			
+			// aapt resource value: 0x7f07000e
+			public const int textView2 = 2131165198;
+			
+			// aapt resource value: 0x7f070001
+			public const int textViewStatus = 2131165185;
 			
 			static Id()
 			{
@@ -144,13 +241,22 @@ namespace DNR.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int loading = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int PodcastDetail = 2130903041;
+			public const int loadingimage = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int PodcastItem = 2130903042;
+			public const int loadingprogress = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int PodcastDetail = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int PodcastItem = 2130903045;
 			
 			static Layout()
 			{
@@ -165,20 +271,26 @@ namespace DNR.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int Hello = 2131034116;
+			// aapt resource value: 0x7f040006
+			public const int Hello = 2130968582;
 			
-			// aapt resource value: 0x7f050000
-			public const int app_name = 2131034112;
+			// aapt resource value: 0x7f040001
+			public const int app_name = 2130968577;
 			
-			// aapt resource value: 0x7f050002
-			public const int pause = 2131034114;
+			// aapt resource value: 0x7f040000
+			public const int library_name = 2130968576;
 			
-			// aapt resource value: 0x7f050003
-			public const int play = 2131034115;
+			// aapt resource value: 0x7f040005
+			public const int loading = 2130968581;
 			
-			// aapt resource value: 0x7f050001
-			public const int stop = 2131034113;
+			// aapt resource value: 0x7f040003
+			public const int pause = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int play = 2130968580;
+			
+			// aapt resource value: 0x7f040002
+			public const int stop = 2130968578;
 			
 			static String()
 			{
@@ -205,6 +317,69 @@ namespace DNR.Droid
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] ProgressWheel = new int[] {
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974,
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978,
+					2130771979};
+			
+			// aapt resource value: 3
+			public const int ProgressWheel_barColor = 3;
+			
+			// aapt resource value: 11
+			public const int ProgressWheel_barLength = 11;
+			
+			// aapt resource value: 10
+			public const int ProgressWheel_barWidth = 10;
+			
+			// aapt resource value: 8
+			public const int ProgressWheel_circleColor = 8;
+			
+			// aapt resource value: 7
+			public const int ProgressWheel_delayMillis = 7;
+			
+			// aapt resource value: 9
+			public const int ProgressWheel_radius = 9;
+			
+			// aapt resource value: 4
+			public const int ProgressWheel_rimColor = 4;
+			
+			// aapt resource value: 5
+			public const int ProgressWheel_rimWidth = 5;
+			
+			// aapt resource value: 6
+			public const int ProgressWheel_spinSpeed = 6;
+			
+			// aapt resource value: 0
+			public const int ProgressWheel_text = 0;
+			
+			// aapt resource value: 1
+			public const int ProgressWheel_textColor = 1;
+			
+			// aapt resource value: 2
+			public const int ProgressWheel_textSize = 2;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

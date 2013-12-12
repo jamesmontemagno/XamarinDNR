@@ -1,5 +1,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
+using DNR.Portable.Services;
 using Microsoft.WindowsAzure.MobileServices;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -36,14 +37,5 @@ namespace DNR
 
 			return true;
 		}
-
-
-    public class AzureHandler : DelegatingHandler
-    {
-      protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
-      {
-        return await base.SendAsync(request, cancellationToken);
-      }
-    }
 	}
 }

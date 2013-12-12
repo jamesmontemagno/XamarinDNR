@@ -1,0 +1,17 @@
+﻿<Portable:PodcastsViewModel xmlns:Portable="using:DNR.Portable" xmlns:Models="using:DNR.Portable.Models" IsBusy="False">
+	<Portable:PodcastsViewModel.Podcasts>
+        <Models:PodcastEpisode AudioUrl="Nullam praesent" CurrentTime="66" Description="Duis mauris maecenas nam nunc" IsFavorite="True" Id="50" Image="Assets/default_icon.png" Name="Aenean cras aliquam" ShowNumber="26" UserId="Vestibulum integer amet"/>
+        <Models:PodcastEpisode AudioUrl="Arcu phasellus hac" CurrentTime="25" Description="Dis est" IsFavorite="False" Id="36" Image="Assets/default_icon.png" Name="Curae bibendum curabitur adipiscing ante" ShowNumber="46" UserId="Leo donec quisque mus vivamus"/>
+        <Models:PodcastEpisode AudioUrl="Sed eget" CurrentTime="82" Description="Vestibulum non consequat vestibulum per" IsFavorite="True" Id="37" Image="Assets/default_icon.png" Name="Aliquam aliquet nec" ShowNumber="40" UserId="Convallis sem commodo"/>
+        <Models:PodcastEpisode AudioUrl="Dapibus erat nam congue" CurrentTime="43" Description="Enim auctor vel cubilia" IsFavorite="False" Id="27" Image="Assets/default_icon.png" Name="Fusce sit conubia parturient lorem" ShowNumber="95" UserId="Dictumst cursus eleifend"/>
+        <Models:PodcastEpisode AudioUrl="Vestibulum sed facilisis nibh" CurrentTime="16" Description="Eros proin dignissim elementum" IsFavorite="True" Id="82" Image="Assets/default_icon.png" Name="Nulla egestas" ShowNumber="72" UserId="Adipiscing dis est lectus"/>
+        <Models:PodcastEpisode AudioUrl="Dolor fermentum hac" CurrentTime="50" Description="Augue litora euismod vestibulum luctus" IsFavorite="False" Id="58" Image="Assets/default_icon.png" Name="Parturient libero ligula faucibus" ShowNumber="82" UserId="Adipiscing fringilla magnis"/>
+        <Models:PodcastEpisode AudioUrl="Felis nisl mauris non inceptos" CurrentTime="79" Description="Habitasse nec fames" IsFavorite="True" Id="98" Image="Assets/default_icon.png" Name="Feugiat gravida mattis mus nisi" ShowNumber="57" UserId="Nunc hendrerit nostra himenaeos"/>
+		<Models:PodcastEpisode AudioUrl="Penatibus interdum ornare lacinia" CurrentTime="48" Description="Malesuada justo adipiscing odio" IsFavorite="False" Id="11" Image="Platea sem parturient lacus" Name="Vestibulum ipsum imperdiet iaculis vestibulum" ShowNumber="43" UserId="Lobortis laoreet vestibulum"/>
+		<Models:PodcastEpisode AudioUrl="Tincidunt rutrum potenti nascetur" CurrentTime="33" Description="Porttitor vestibulum" IsFavorite="True" Id="58" Image="Sit adipiscing pharetra pretium vel" Name="Orci lorem natoque primis posuere" ShowNumber="44" UserId="Pede rhoncus tristique quam nam"/>
+		<Models:PodcastEpisode AudioUrl="Ultricies semper" CurrentTime="75" Description="Quis sodales viverra" IsFavorite="False" Id="15" Image="Dis sociis" Name="Magna sed placerat sapien" ShowNumber="91" UserId="Urna aliquam pulvinar"/>
+	</Portable:PodcastsViewModel.Podcasts>
+	<Portable:PodcastsViewModel.SelectedEpisode>
+		<Models:PodcastEpisode AudioUrl="Integer hac quisque" CurrentTime="99" Description="Cras parturient tellus tempor" IsFavorite="True" Id="28" Image="Vivamus vestibulum vulputate" Name="Sagittis venenatis taciti est" ShowNumber="84" UserId="Vestibulum senectus"/>
+	</Portable:PodcastsViewModel.SelectedEpisode>
+</Portable:PodcastsViewModel>

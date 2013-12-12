@@ -1,4 +1,4 @@
-﻿<common:LayoutAwarePage
+﻿<Page
     x:Name="pageRoot"
     x:Class="DNR.Win.GetStarted"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Click="GoBack"
+            <Button x:Name="backButton" Margin="39,59,39,0" Click="BackButton_OnClick"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
@@ -62,4 +62,4 @@
             </StackPanel>
         </Grid>
       </Grid>
-</common:LayoutAwarePage>
+</Page>

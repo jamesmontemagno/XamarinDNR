@@ -30,5 +30,11 @@
 	<array/>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon-60@2x.png</string>
+	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 </dict>
 </plist>

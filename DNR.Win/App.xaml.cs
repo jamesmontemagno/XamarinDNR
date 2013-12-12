@@ -1,4 +1,5 @@
-﻿using DNR.Win.Common;
+﻿using DNR.Portable.Services;
+using DNR.Win.Common;
 
 using System;
 using Windows.ApplicationModel;

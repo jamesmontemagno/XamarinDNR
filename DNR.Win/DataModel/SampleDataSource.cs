@@ -19,6 +19,7 @@ using Windows.ApplicationModel.Core;
 // Applications may use this model as a starting point and build on it, or discard it entirely and
 // replace it with something appropriate to their needs.
 using DNR.Portable;
+using DNR.Portable.Models;
 
 namespace DNR.Win.Data
 {
@@ -26,7 +27,7 @@ namespace DNR.Win.Data
     /// Base class for <see cref="SampleDataItem"/> and <see cref="SampleDataGroup"/> that
     /// defines properties common to both.
     /// </summary>
-    [Windows.Foundation.Metadata.WebHostHidden]
+    /*[Windows.Foundation.Metadata.WebHostHidden]
     public abstract class SampleDataCommon : DNR.Win.Common.BindableBase
     {
         private static Uri _baseUri = new Uri("ms-appx:///");
@@ -254,7 +255,7 @@ namespace DNR.Win.Data
         }
 
         List<PodcastEpisode> episodes;
-        PodcastFetcher fetcher;
+        PodcastsViewModel fetcher;
         SampleDataGroup group1;
 
         private void LoadSampleData()
@@ -310,8 +311,8 @@ namespace DNR.Win.Data
         {
             
 
-            fetcher = new PodcastFetcher();
-            episodes = new List<PodcastEpisode>(await fetcher.GetPodcastsAsync());
+            fetcher = new PodcastsViewModel();
+            //episodes = new List<PodcastEpisode>(await fetcher.ExecuteGetPodcastsCommand());
             int i = 0;
             foreach (var episode in episodes)
             {
@@ -322,5 +323,5 @@ namespace DNR.Win.Data
                 
             this.AllGroups.Add(group1);
         }
-    }
+    }*/
 }

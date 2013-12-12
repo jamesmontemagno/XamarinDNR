@@ -1,4 +1,5 @@
 using DNR.Portable;
+using DNR.Portable.Models;
 using MonoTouch.AVFoundation;
 using MonoTouch.CoreMedia;
 using MonoTouch.Foundation;
@@ -135,7 +136,7 @@ namespace DNR
 
 
       var flexSpace = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
-      var space = new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace) {Width = 40};
+      var space = new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace) { Width = 40 };
 
 
       soundBars = new UIView(new RectangleF(0, 0, 50, 50));
@@ -151,7 +152,7 @@ namespace DNR
       View.Add(playerBar);
     }
 
-    
+
 
     void timer_Elapsed(object sender, ElapsedEventArgs e)
     {
@@ -164,8 +165,10 @@ namespace DNR
       InvokeOnMainThread(() =>
         {
           podcastSlider.Value = (float)sliderVal;
+          var current = new TimeSpan(0, 0, (int)player.CurrentItem.CurrentTime.Seconds);
+          var duration = new TimeSpan(0, 0, (int)player.CurrentItem.Duration.Seconds);
+          timeStamp.Text = CurrentPodcastEpisode.GetTimeDisplay(current, duration);
 
-          timeStamp.Text = string.Format("{0:hh\\:mm\\:ss}", new TimeSpan(0, 0, (int)player.CurrentItem.CurrentTime.Seconds)) + " / " + string.Format("{0:hh\\:mm\\:ss}", new TimeSpan(0, 0, (int)player.CurrentItem.Duration.Seconds));
         });
     }
 
@@ -180,7 +183,7 @@ namespace DNR
       if (updated == null || updated.ShowNumber != CurrentPodcastEpisode.ShowNumber)
         return;
 
-	  if (player == null || player.Status != AVPlayerStatus.ReadyToPlay)
+      if (player == null || player.Status != AVPlayerStatus.ReadyToPlay)
       {
         startTime = updated.CurrentTime;
         return;
@@ -205,8 +208,8 @@ namespace DNR
 
     void AddBars()
     {
-	  if (!Application.IsiOS7)
-		return;
+      if (!Application.IsiOS7)
+        return;
 
       for (int i = 0; i < 5; i++)
       {

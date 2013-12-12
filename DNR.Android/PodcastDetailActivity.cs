@@ -6,20 +6,20 @@ using Android.Views;
 using Android.Widget;
 using DNR.Droid;
 using System;
-using DNR.Portable;
+using DNR.Portable.Models;
 
 namespace DRN.Droid
 {
   [Activity(Label = ".NET Rocks!", Theme = "@style/Theme", Icon = "@drawable/Icon")]
   public class PodcastDetailActivity : Activity
   {
-    public static PodcastEpisode CurrentPodcastEpisode { get; set; }
     MediaPlayer player;
     TextView status;
     SeekBar seekBar;
     Handler updateHandler;
     int timeToSet = 0;
     bool initialized = false;
+    private PodcastEpisode episode;
 
     protected async override void OnCreate(Bundle bundle)
     {
@@ -27,9 +27,12 @@ namespace DRN.Droid
 
       SetContentView(Resource.Layout.PodcastDetail);
 
+      var showNumber = Intent.GetIntExtra("show_number", 0);
+      episode = Activity1.ViewModel.GetPodcast(showNumber);
+
 
       var description = FindViewById<TextView>(Resource.Id.descriptionView);
-      description.Text = CurrentPodcastEpisode.Description;
+      description.Text = episode.Description;
 
       var play = FindViewById<Button>(Resource.Id.playButton);
       var pause = FindViewById<Button>(Resource.Id.pauseButton);
@@ -39,7 +42,7 @@ namespace DRN.Droid
       updateHandler = new Handler();
 
       player = new MediaPlayer();
-      player.SetDataSource(this, Android.Net.Uri.Parse(CurrentPodcastEpisode.AudioUrl));
+      player.SetDataSource(this, Android.Net.Uri.Parse(episode.AudioUrl));
       player.PrepareAsync();
 
       player.Prepared += (sender, e) =>
@@ -61,7 +64,7 @@ namespace DRN.Droid
       {
         player.Stop();
         player.Reset();
-        player.SetDataSource(this, Android.Net.Uri.Parse(CurrentPodcastEpisode.AudioUrl));
+        player.SetDataSource(this, Android.Net.Uri.Parse(episode.AudioUrl));
         player.Prepare();
       };
 
@@ -73,9 +76,9 @@ namespace DRN.Droid
             player.SeekTo((int)(player.Duration * ((float)seekBar.Progress / 100.0)));
           };
 
-      var updated = await CurrentPodcastEpisode.GetTimeAsync();
+      var updated = await episode.GetTimeAsync();
 
-      if (updated == null || updated.ShowNumber != CurrentPodcastEpisode.ShowNumber)
+      if (updated == null || updated.ShowNumber != episode.ShowNumber)
         return;
 
       if (initialized && player != null)
@@ -99,9 +102,7 @@ namespace DRN.Droid
             var current = player.CurrentPosition;
             var duration = player.Duration;
             seekBar.Progress = (int)(((float)current / (float)duration) * 100.0);
-            var currentText = string.Format("{0:hh\\:mm\\:ss}", new TimeSpan(0, 0, 0, 0, current));
-            var durationText = string.Format("{0:hh\\:mm\\:ss}", new TimeSpan(0, 0, 0, 0, duration));
-            status.Text = currentText + " / " + durationText;
+            status.Text = episode.GetTimeDisplay(new TimeSpan(0, 0, 0, 0, current), new TimeSpan(0, 0, 0, 0, duration));
             if (player.IsPlaying)
               updateHandler.PostDelayed(UpdateStatus, 1000);
           });
@@ -114,7 +115,7 @@ namespace DRN.Droid
 
       if (player == null)
       {
-        player = MediaPlayer.Create(this, Android.Net.Uri.Parse(CurrentPodcastEpisode.AudioUrl));
+        player = MediaPlayer.Create(this, Android.Net.Uri.Parse(episode.AudioUrl));
       }
     }
 
@@ -149,10 +150,9 @@ namespace DRN.Droid
 
     public override bool OnOptionsItemSelected(IMenuItem item)
     {
-      if (item.ItemId == saveId && CurrentPodcastEpisode != null)
+      if (item.ItemId == saveId && episode != null)
       {
-        CurrentPodcastEpisode.SaveTimeAsync(player.CurrentPosition / 1000);
-        //CurrentPodcastEpisode.SaveTime(player.CurrentPosition / 1000);
+        episode.SaveTimeAsync(player.CurrentPosition / 1000);
         Toast.MakeText(this, "Progress Saved!", ToastLength.Short).Show();
       }
       return base.OnOptionsItemSelected(item);
@@ -162,7 +162,7 @@ namespace DRN.Droid
     {
       var intent = new Intent(Intent.ActionSend);
       intent.SetType("text/plain");
-      intent.PutExtra(Intent.ExtraText, "Check out Dot Net Rocks!: " + CurrentPodcastEpisode.AudioUrl);
+      intent.PutExtra(Intent.ExtraText, "Check out Dot Net Rocks!: " + episode.AudioUrl);
       return intent;
     }
 
