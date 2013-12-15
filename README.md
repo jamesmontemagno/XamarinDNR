@@ -14,6 +14,11 @@ Setup
         "PUT-YOUR-API-KEY-HERE");
 * This information can be found on Azure
         
+
+
+Integrating Azure Mobile Services into your project and PCL:
+
+Here is a guide with step by step instructions on: http://motzcod.es/post/70038987318/azure-mobile-services-xamarin-pcl
         
 
 
